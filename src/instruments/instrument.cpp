@@ -15,7 +15,7 @@ namespace upc {
 			      const string &parameters) {
     Instrument * pInst = 0;
     //    cout << name << ": " << parameters << endl;
-    if (name == "InstrumentDumb") {
+    if (name == "dumb") {
       pInst = (Instrument *) new InstrumentDumb(parameters);
     }
     return pInst;
