@@ -1,5 +1,6 @@
 #include <iostream>
 #include "instrument_dumb.h"
+#include "seno.h" 
 
 /*
   For each new instrument:
@@ -17,6 +18,9 @@ namespace upc {
     //    cout << name << ": " << parameters << endl;
     if (name == "dumb") {
       pInst = (Instrument *) new InstrumentDumb(parameters);
+    }
+    else if (name == "seno") {              // <-- AÑADIR
+      pInst = (Instrument *) new Seno(parameters);   // <-- AÑADIR
     }
     return pInst;
   }
