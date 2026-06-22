@@ -13,6 +13,7 @@ sources = [
 	'effects/tremolo.cpp',
 	'effects/vibrato.cpp',
 	'effects/glissando.cpp',
+	'instruments/instrument_fm.cpp',
 ]
 
 executable(
