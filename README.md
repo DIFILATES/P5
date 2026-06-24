@@ -47,15 +47,21 @@ permitan visualizar el funcionamiento de la curva ADSR.
   - Debera representar en esta memoria **ambos** posibles finales de la nota.
 
   ***Guitarra: el so s'extingeix sol (la caiguda arriba a zero) abans que es deixi anar la nota; el NoteOff arriba quan ja no hi ha senyal.***
-    ***CORBA TEÒRICA - GUITARRA***
+
+  ***CORBA TEÒRICA - GUITARRA:***
+
 ![Envolvente guitarra teórica](img/envolvente_guitarra.png)
-    ***CAPTURA WAVESURFER - GUITARRA***
+
+  ***CAPTURA WAVESURFER - GUITARRA:***
+
 ![Gráfica ADSR guitarra](img/ADSR_guitarra.png)
 
   ***Piano: la nota s'acaba (NoteOff) abans que el so s'hagi extingit; en deixar la tecla, el release retalla el so que encara sonava.***
-    ***CORBA TEÒRICA - PIANO***
+
+  ***CORBA TEÒRICA - PIANO:***
 ![Envolvente piano teórica](img/envolvente_piano.png)
-    ***CAPTURA WAVESURFER - PIANO***
+
+  ***CAPTURA WAVESURFER - PIANO:***
 ![Gráfica ADSR piano](img/ADSR_piano.png)
 
   ***La línia sòlida és l'envolvent real (amb el seu tall) i la puntejada la continuació ideal si la nota fos infinita.***
@@ -67,9 +73,11 @@ permitan visualizar el funcionamiento de la curva ADSR.
   liberación también es bastante rápida.
 
   ***Atac ràpid fins al nivell de manteniment, sustain alt i mantingut (S=0.8) i lliberació ràpida (A=0.05, D=0.05, R=0.05).***
-    ***CORBA TEÒRICA - CORDA FREGADA***
+
+  ***CORBA TEÒRICA - CORDA FREGADA***
 ![Envolvente cuerda frotada teórica](img/envolvente_corda_fregada.png)
-    ***CAPTURA WAVESURFER - CORDA FREGADA***
+
+  ***CAPTURA WAVESURFER - CORDA FREGADA***
 ![Gráfica ADSR viola](img/ADSR_viola.png)
 
 Para los cuatro casos, deberá incluir una gráfica en la que se visualice claramente la curva ADSR. Deberá
@@ -167,7 +175,9 @@ const vector<float> & Seno::synthesize() {
   e incluya una gráfica en la que se vean claramente (use pelotitas en lugar de líneas) los valores de la
   tabla y los de la señal generada.
 
+
   ***MÈTODE D'ASSIGNACIÓ DE VALORS:***
+
   ***La taula `tbl` emmagatzema un període de sinusoide en N posicions enteres. Per sintetitzar una nota de freqüència***
   ***fonamental f0, la taula es recorre amb un pas `step = f0·N/fs`, on `f0 = 440·2^((note−69)/12)`. Com que `step` no és***
   ***enter en general, l'índex de lectura `fase` cau entre dues posicions de la taula; el valor de la senyal s'assigna***
@@ -251,17 +261,17 @@ const vector<float> & Seno::synthesize() {
 ![Efecto Trémolo](img/efecte_tremolo.png)
     ***TRÉMOLO - WAVESURFER***
 ![Wavesurfer Trémolo](img/ws_tremolo.png)
-  ***És una modulació d'amplitud: l'envolvent del senyal oscil·la sinusoïdalment a la freqüència de modulació fm,***
-  ***amb una profunditat controlada per A. A la gràfica es veu l'envolvent oscil·lant amb període Tm=1/fm i una***
-  ***profunditat igual a A (distància entre el màxim i el mínim de l'amplitud).***
+  ***És una modulació d'amplitud. L'envolvent del senyal oscil·la sinusoïdalment a la freqüència de modulació ``fm``,***
+  ***amb una profunditat controlada per ``A``. A la gràfica es veu l'envolvent oscil·lant amb període ``Tm=1/fm``i una***
+  ***profunditat igual a ``A`` (distància entre el màxim i el mínim de l'amplitud).***
 
   ***EFECTO VIBRATO:***
 ![Efecto Vibrato](img/efecte_vibrato.png)
     ***VIBRATO - WAVESURFER***
 ![Wavesurfer Vibrato](img/ws_vibrato.png)
-  ***És una modulació de freqüència (pitch). El to oscil·la al voltant de la nota a la freqüència fm, amb una extensió***
+  ***És una modulació de freqüència (pitch). El to oscil·la al voltant de la nota a la freqüència ``fm``, amb una extensió***
   ***de I semitons. A la gràfica, la part inferior mostra la freqüència instantània oscil·lant al voltant de la fonamental,***
-  ***amb període Tm=1/fm i una excursió determinada per I.***
+  ***amb període ``Tm=1/fm`` i una excursió determinada per ``I``.***
 
 
 
@@ -315,32 +325,33 @@ deberá venir expresado en semitonos.
   vea, claramente, la correspondencia entre los valores `N1`, `N2` e `I` con la señal que obtuvo.
 
   ***VIBRATO:***
-  ***S'ha construït un instrument de síntesi FM que genera el senyal ``x(t) = A·sin(2π·fc·t + I·sin(2π·fm·t))``,*** 
-  ***amb ``fc = f0·N1`` i ``fm = f0·N2``.***
+
+  ***S'ha construït un instrument de síntesi FM que genera el senyal ``x(t) = A·sin(2π·fc·t + I·sin(2π·fm·t))``, amb ``fc = f0·N1`` i ``fm = f0·N2``.***
+
   ***Amb freqüència de modulació baixa i índex moderat, l'FM produeix un vibrato.***
-  ***A la gràfica, a dalt es mostra el senyal (fc=440 Hz, fm=6 Hz) i a baix la freqüència instantània, ***
-  ***que oscil·la al voltant de la portadora amb període Tm=1/fm=167 ms i excursió de pic fd=I·fm=18 Hz.***
+  ***A la gràfica, a dalt es mostra el senyal (fc=440 Hz, fm=6 Hz) i a baix la freqüència instantània, que oscil·la al voltant de la portadora amb període ``Tm=1/fm=167 ms`` i excursió de pic ``fd=I·fm=18 Hz``.***
   ***fm fixa la velocitat de l'oscil·lació i el producte I·fm la seva amplitud.***
   ![FM Vibrato](img/fm_vibrato_clar.png)
 
 
 
   ***N1 i N2 - RELACIÓ PORTADORA/MODULADORA:*** 
-  ***Amb l'índex fix, la relació N1:N2 determina on apareixen les components (``fc±k·fm = f0·(N1±k·N2)``): ***
-  ***amb 1:1 surten tots els múltiples de la fonamental, amb 1:2 queden més separades i amb 2:1 la portadora***
-  ***puja cap a l'agut. ***
+  ***Amb l'índex fix, la relació N1:N2 determina on apareixen les components (``fc±k·fm = f0·(N1±k·N2)``): amb 1:1 surten tots els múltiples de la fonamental, amb 1:2 queden més separades i amb 2:1 la portadora puja cap a l'agut. ***
+
   ***N1 i N2 controlen el timbre a través de la posició dels harmònics.***
   ![FM N1/N2](img/fm_n1n2.png)
 
 
 
   ***ÍNDEX DE MODULACIÓ I:*** 
+
   ***A mesura que augmenta l'índex, la forma d'ona es deforma respecte de la sinusoide i apareixen noves components freqüencials.***
   ***L'amplada de banda creix amb l'índex (aproximadament ``2·fm·(1+I)``).***
-    ***Forma d'ona:***
+
+  ***Forma d'ona:***
   ![FM Vibrato2](img/fm_vibrato.png)
 
-    ***Espectre:***
+  ***Espectre:***
   ![FM Espectre](img/fm_espectre.png)
 
 
