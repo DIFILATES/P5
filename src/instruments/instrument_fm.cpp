@@ -8,32 +8,6 @@
 using namespace upc;
 using namespace std;
 
-/*
-  INSTRUMENT DE SINTESI FM (segons John M. Chowning, 1973).
-
-  Genera el senyal:
-      x(t) = A * sin( 2*pi*fc*t + I(t) * sin(2*pi*fm*t) )
-
-  on:
-    - fc = f0 * N1   (frequencia de la portadora)
-    - fm = f0 * N2   (frequencia de la moduladora)
-    - f0 = frequencia fonamental de la nota MIDI
-    - I(t) = index de modulacio, que VARIA EN EL TEMPS
-
-  INDEX VARIABLE (clau per al so de campana de Chowning):
-    L'index segueix la MATEIXA envolvent ADSR que l'amplitud. Aixi, quan el so
-    decau, l'index tambe baixa i el timbre es torna mes pur a mesura que
-    s'apaga, com en una campana real. L'index instantani interpola entre:
-       Imax_lin  quan l'envolvent val 1 (atac)
-       Imin_lin  quan l'envolvent val 0 (final)
-    -> I(n) = Imin_lin + env(n) * (Imax_lin - Imin_lin)
-
-  PARAMETRES DEL FITXER instruments:
-    N1, N2 : enters de la relacio fc/fm = N1/N2
-    I      : index de modulacio MAXIM en semitons (a l'atac)
-    Imin   : index de modulacio MINIM en semitons (al final). Per defecte 0.
-             (Per un instrument d'index constant, posa Imin = I.)
-*/
 
 InstrumentFM::InstrumentFM(const std::string &param)
   : adsr(SamplingRate, param) {
@@ -101,7 +75,7 @@ const vector<float> & InstrumentFM::synthesize() {
   //    Passant un vector de uns a adsr(), el resultat es la propia envolvent
   //    (perque adsr multiplica el vector per la forma ADSR).
   vector<float> env(x.size(), 1.0);
-  adsr(env);   // env[i] conte ara el valor de l'envolvent a la mostra i
+  adsr(env);  
 
   // 2) Sintesi FM amb index variable segons l'envolvent
   for (unsigned int i = 0; i < x.size(); ++i) {
