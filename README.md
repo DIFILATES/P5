@@ -89,6 +89,7 @@ añadir la información necesaria para su correcta interpretación, aunque esa i
 colocar etiquetas y títulos adecuados en la propia gráfica (se valorará positivamente esta alternativa).
 
 ***DADES ADSR DELS 4 MODELS:***
+
 ![Datos ADSR de todos los modelos](img/ADSR_data.png)
 
 
@@ -282,6 +283,7 @@ const vector<float> & Seno::synthesize() {
 ![Efecto Vibrato](img/efecte_vibrato.png)
     
 ***VIBRATO - WAVESURFER***
+
 ![Wavesurfer Vibrato](img/ws_vibrato.png)
 
 ***És una modulació de freqüència (pitch). El to oscil·la al voltant de la nota a la freqüència ``fm``, amb una extensió***
@@ -359,6 +361,7 @@ deberá venir expresado en semitonos.
   ***Amb l'índex fix, la relació N1:N2 determina on apareixen les components (``fc±k·fm = f0·(N1±k·N2)``): amb 1:1 surten tots els múltiples de la fonamental, amb 1:2 queden més separades i amb 2:1 la portadora puja cap a l'agut. ***
 
   ***N1 i N2 controlen el timbre a través de la posició dels harmònics.***
+  
   ![FM N1/N2](img/fm_n1n2.png)
 
 
@@ -369,9 +372,11 @@ deberá venir expresado en semitonos.
   ***L'amplada de banda creix amb l'índex (aproximadament ``2·fm·(1+I)``).***
 
   ***Forma d'ona:***
+  
   ![FM Vibrato2](img/fm_vibrato.png)
 
   ***Espectre:***
+  
   ![FM Espectre](img/fm_espectre.png)
 
 
@@ -395,7 +400,8 @@ deberá venir expresado en semitonos.
       synth campana.orc doremi.sco campana.wav
     ```
 
-    ***FORMA D'ONA + ESPECTRES INICI/FINAL:***
+  ***FORMA D'ONA + ESPECTRES INICI/FINAL:***
+  
     ![FM Campana](img/fm_campana.png)
 
     
