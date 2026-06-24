@@ -407,6 +407,22 @@ Use el programa `synth` para generar canciones a partir de su partitura MIDI. Co
 - Coloque el resultado, junto con los ficheros necesarios para generarlo, en el directorio `work/music`.
 - Indique, a continuación, la orden necesaria para generar la señal (suponiendo que todos los archivos
   necesarios están en el directorio indicado).
+### Orquestació bàsica: *You've got a friend in me* (Toy Story)
+
+Per a l'arranjament del tema principal de *Toy Story* de Randy Newman, s'ha utilitzat el fitxer de partitura proporcionat a la pràctica (`ToyStory_A_Friend_in_me.sco`). S'ha dissenyat una orquestra simple i efectiva per cobrir els dos rols requerits a l'enunciat mitjançant síntesi FM:
+
+- **Pista 1 (Instrument Solista):** S'ha modelat un **Piano** d'estil *jazz*, amb un atac percussiu curt i un índex de modulació alt ($I=3.0$) per donar-li brillantor i fer que la cèlebre melodia destaqui clarament.
+- **Pista 2 (Baix):** S'ha optat per un **Contrabaix** acústic. S'ha reduït l'índex de modulació per evitar harmònics estridents i centrar l'energia acústica en les freqüències subgreus, aconseguint un efecte de *walking bass* càlid, rodó i amb molt de cos.
+
+De la mateixa manera que en les orquestracions més complexes, s'ha aplicat un control de volums escalat sobre la partitura base per garantir una mescla neta i evitar qualsevol saturació del senyal. 
+
+Tots els fitxers generats, juntament amb l'orquestra (`toystory.orc`) i la partitura final (`toystory.sco`), es troben al directori `work/music`.
+
+L'ordre necessària per generar la senyal d'àudio final és:
+
+```bash
+synth toystory.orc toystory.sco toystory.wav && play toystory.wav
+```
 
 También puede orquestar otros temas más complejos, como la banda sonora de *Hawaii5-0* o el villacinco de
 John Lennon *Happy Xmas (War Is Over)* (fichero `The_Christmas_Song_Lennon.sco`), o cualquier otra canción
@@ -415,6 +431,27 @@ de su agrado o composición. Se valorará la riqueza instrumental, su modelado y
   `work/music`.
 - Indique, a continuación, la orden necesaria para generar cada una de las señales usando los distintos
   ficheros.
+
+  ### Orquestació avançada: *Penny Lane* (The Beatles)
+
+A més de l'orquestració sol·licitada, s'ha dut a terme un arranjament del tema *Penny Lane* de The Beatles, utilitzant síntesi FM. S'han ajustat acuradament els paràmetres de modulació ($I$, $I_{min}$), la relació de freqüències ($N_1:N_2$) i les envolupants (ADSR) per simular la instrumentació clàssica de la peça original.
+
+L'assignació de les pistes i el seu disseny és el següent:
+- **Pista 2 (Veu principal):** Modelada com un Saxo Tenor, amb un atac de canya ric i un cos dinàmic per liderar la melodia.
+- **Pista 4 (Baix elèctric):** Simulant el clàssic baix Hofner, amb un to rodó, profund i poca modulació.
+- **Pista 5 (Piano rítmic):** So percussiu, amb una caiguda ràpida i un lleuger toc d'estridència metàl·lica.
+- **Pista 6 (Contrabaix):** Reforç de freqüències subgreus per donar empenta i cos a la base rítmica.
+- **Pistes 7 i 8 (Secció de metalls i Trompeta Piccolo):** Modelatge de vent-metall amb índexs de modulació molt alts a l'atac per aconseguir la màxima brillantor característica de la cançó. La pista 8 actua com a solista, mentre que la 7 executa acords polifònics de fons.
+- **Pista 10 (Bateria):** Acompanyament de percussió seca.
+
+*Nota:* S'ha eliminat la Pista 3, ja que el MIDI original contenia exclusivament dades inútils acumulades a l'inici del fitxer. Així mateix, s'ha aplicat un control estricte de volums mitjançant un script per establir una jerarquia sonora i evitar la saturació (*clipping*) deguda a la suma d'harmònics.
+
+Tots els fitxers generats, juntament amb l'orquestra (`pennylane.orc`) i la partitura mesclada (`pennylane.sco`), es troben al directori `work/music`.
+
+L'ordre necessària per generar la senyal d'àudio és:
+
+```bash
+synth pennylane.orc pennylane.sco pennylane.wav && play pennylane.wav
 
 > NOTA:
 >

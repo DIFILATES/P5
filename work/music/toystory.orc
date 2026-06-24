@@ -1,0 +1,2 @@
+1 fm N1=3; N2=2; I=4; Imin=2; ADSR_A=0.04; ADSR_D=0.1; ADSR_S=0.7; ADSR_R=0.15;
+2 fm N1=1; N2=1; I=3; Imin=1; ADSR_A=0.05; ADSR_D=0.2; ADSR_S=0.6; ADSR_R=0.2;
