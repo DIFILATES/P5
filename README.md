@@ -48,23 +48,25 @@ permitan visualizar el funcionamiento de la curva ADSR.
 
   ***Guitarra: el so s'extingeix sol (la caiguda arriba a zero) abans que es deixi anar la nota; el NoteOff arriba quan ja no hi ha senyal.***
 
-  ***CORBA TEÒRICA - GUITARRA:***
+***CORBA TEÒRICA - GUITARRA:***
 
 ![Envolvente guitarra teórica](img/envolvente_guitarra.png)
 
-  ***CAPTURA WAVESURFER - GUITARRA:***
+***CAPTURA WAVESURFER - GUITARRA:***
 
 ![Gráfica ADSR guitarra](img/ADSR_guitarra.png)
 
-  ***Piano: la nota s'acaba (NoteOff) abans que el so s'hagi extingit; en deixar la tecla, el release retalla el so que encara sonava.***
+***Piano: la nota s'acaba (NoteOff) abans que el so s'hagi extingit; en deixar la tecla, el release retalla el so que encara sonava.***
 
-  ***CORBA TEÒRICA - PIANO:***
+***CORBA TEÒRICA - PIANO:***
+
 ![Envolvente piano teórica](img/envolvente_piano.png)
 
-  ***CAPTURA WAVESURFER - PIANO:***
+***CAPTURA WAVESURFER - PIANO:***
+
 ![Gráfica ADSR piano](img/ADSR_piano.png)
 
-  ***La línia sòlida és l'envolvent real (amb el seu tall) i la puntejada la continuació ideal si la nota fos infinita.***
+***La línia sòlida és l'envolvent real (amb el seu tall) i la puntejada la continuació ideal si la nota fos infinita.***
 
 
 
@@ -72,19 +74,21 @@ permitan visualizar el funcionamiento de la curva ADSR.
   ellos, el ataque es relativamente rápido hasta alcanzar el nivel de mantenimiento (sin sobrecarga), y la
   liberación también es bastante rápida.
 
-  ***Atac ràpid fins al nivell de manteniment, sustain alt i mantingut (S=0.8) i lliberació ràpida (A=0.05, D=0.05, R=0.05).***
+***Atac ràpid fins al nivell de manteniment, sustain alt i mantingut (S=0.8) i lliberació ràpida (A=0.05, D=0.05, R=0.05).***
 
-  ***CORBA TEÒRICA - CORDA FREGADA***
+***CORBA TEÒRICA - CORDA FREGADA***
+
 ![Envolvente cuerda frotada teórica](img/envolvente_corda_fregada.png)
 
-  ***CAPTURA WAVESURFER - CORDA FREGADA***
+***CAPTURA WAVESURFER - CORDA FREGADA***
+
 ![Gráfica ADSR viola](img/ADSR_viola.png)
 
 Para los cuatro casos, deberá incluir una gráfica en la que se visualice claramente la curva ADSR. Deberá
 añadir la información necesaria para su correcta interpretación, aunque esa información puede reducirse a
 colocar etiquetas y títulos adecuados en la propia gráfica (se valorará positivamente esta alternativa).
 
-  ***DADES ADSR DELS 4 MODELS:***
+***DADES ADSR DELS 4 MODELS:***
 ![Datos ADSR de todos los modelos](img/ADSR_data.png)
 
 
@@ -185,12 +189,16 @@ const vector<float> & Seno::synthesize() {
   ***La continuïtat de fase ntre blocs es manté arrossegant el valor de `fase` d'una crida a la següent i envoltant-lo mòdul N.***
   ***Aquest mètode introdueix una distorsió de quantització (visible a les gràfiques com la desviació dels punts respecte a la sinusoide ideal), que es podria reduir amb interpolació lineal entre les dues mostres adjacents.***
 
-  ***GRÀFICA N=40 (La central, 440 Hz):***
-![Muestreo con N20 agudo](img/pelotitas_N20_agudo.png)
-  ***A la part superior es mostren els 40 valors emmagatzemats a la taula, que corresponen a un període complet d'una sinusoide mostrejada uniformement. A la part inferior es mostra el senyal generat per l'instrument en sintetitzar la nota La₄ (440 Hz). Com que el pas de lectura és step = 0,399, l'índex avança menys d'una posició per cada mostra de sortida, de manera que diverses mostres consecutives s'arrodoneixen al mateix punt de la taula i apareixen valors repetits (es veuen com petits esglaons). Els punts vermells representen el senyal real arrodonit al veí més proper, i la línia grisa és la sinusoide ideal de 440 Hz; la desviació entre tots dos il·lustra la distorsió de quantització introduïda pel mètode.***
+***GRÀFICA N=40 (La central, 440 Hz):***
 
-  ***GRÀFICA N=20 (nota aguda, ~1046 Hz):***
+![Muestreo con N20 agudo](img/pelotitas_N20_agudo.png)
+
+***A la part superior es mostren els 40 valors emmagatzemats a la taula, que corresponen a un període complet d'una sinusoide mostrejada uniformement. A la part inferior es mostra el senyal generat per l'instrument en sintetitzar la nota La₄ (440 Hz). Com que el pas de lectura és step = 0,399, l'índex avança menys d'una posició per cada mostra de sortida, de manera que diverses mostres consecutives s'arrodoneixen al mateix punt de la taula i apareixen valors repetits (es veuen com petits esglaons). Els punts vermells representen el senyal real arrodonit al veí més proper, i la línia grisa és la sinusoide ideal de 440 Hz; la desviació entre tots dos il·lustra la distorsió de quantització introduïda pel mètode.***
+
+***GRÀFICA N=20 (nota aguda, ~1046 Hz):***
+
 ![Muestreo con N40 La440](img/pelotitas_N40_La440.png)
+
 ***Amb una taula més curta (N=20) i una nota més aguda, el pas de lectura és més gran (step = 0,475), de manera que l'índex avança gairebé mig punt de taula per mostra. Això permet veure un període complet del senyal generat en menys mostres i apreciar millor com els punts vermells no cauen exactament sobre la sinusoide ideal grisa: en recórrer la taula amb un pas no enter, el valor assignat a cada mostra és el de la posició entera més propera, cosa que separa lleugerament el senyal real de la forma ideal. Aquesta separació és la manifestació visible de l'error introduït pel mètode del veí més proper, que es podria reduir mitjançant interpolació lineal.***
 
 
@@ -199,8 +207,8 @@ const vector<float> & Seno::synthesize() {
 - Si ha implementado la síntesis por tabla almacenada en fichero externo, incluya a continuación el código
   del método `command()`.
 
-  ***Aquesta part no s'ha arribat a implementar. Tot i així, en descrivim el funcionament i mostrem com quedaria el codi.***
-  ***La síntesi per taula de fitxer extern (instrument tipus FicTabla) consisteix a generar el so a partir d'un cicle de senyal d'una font real en lloc d'una sinusoide generada internament. La diferència respecte del Seno està només al constructor: en comptes de rebre la mida de la taula (N) i omplir-la amb sin(), rebria el nom d'un fitxer WAVE i en carregaria un cicle amb readwav_mono():***
+***Aquesta part no s'ha arribat a implementar. Tot i així, en descrivim el funcionament i mostrem com quedaria el codi.***
+***La síntesi per taula de fitxer extern (instrument tipus FicTabla) consisteix a generar el so a partir d'un cicle de senyal d'una font real en lloc d'una sinusoide generada internament. La diferència respecte del Seno està només al constructor: en comptes de rebre la mida de la taula (N) i omplir-la amb sin(), rebria el nom d'un fitxer WAVE i en carregaria un cicle amb readwav_mono():***
 
   ```cpp
     FicTabla::FicTabla(const std::string &param)
@@ -226,7 +234,7 @@ const vector<float> & Seno::synthesize() {
     }
   ```
 
-  ***El mètode command() seria pràcticament idèntic al del Seno, ja que el càlcul del pas de lectura no depèn de com s'hagi omplert la taula:***
+***El mètode command() seria pràcticament idèntic al del Seno, ja que el càlcul del pas de lectura no depèn de com s'hagi omplert la taula:***
   ```cpp
     void FicTabla::command(long cmd, long note, long vel) {
       if (cmd == 9) {
@@ -245,7 +253,7 @@ const vector<float> & Seno::synthesize() {
     }
   ```
 
-  ***Tot i tenir-ne clara la implementació, s'ha prioritzat polir la resta d'instruments i efectes de la pràctica.***
+***Tot i tenir-ne clara la implementació, s'ha prioritzat polir la resta d'instruments i efectes de la pràctica.***
 
 
 
@@ -257,21 +265,28 @@ const vector<float> & Seno::synthesize() {
   índice de modulación) en la señal generada (se valorará que la explicación esté contenida en las propias
   gráficas, sin necesidad de mucha *literatura*).
 
-  ***EFECTO TRÉMOLO:***
-![Efecto Trémolo](img/efecte_tremolo.png)
-    ***TRÉMOLO - WAVESURFER***
-![Wavesurfer Trémolo](img/ws_tremolo.png)
-  ***És una modulació d'amplitud. L'envolvent del senyal oscil·la sinusoïdalment a la freqüència de modulació ``fm``,***
-  ***amb una profunditat controlada per ``A``. A la gràfica es veu l'envolvent oscil·lant amb període ``Tm=1/fm``i una***
-  ***profunditat igual a ``A`` (distància entre el màxim i el mínim de l'amplitud).***
+***EFECTO TRÉMOLO:***
 
-  ***EFECTO VIBRATO:***
+![Efecto Trémolo](img/efecte_tremolo.png)
+
+***TRÉMOLO - WAVESURFER***
+
+![Wavesurfer Trémolo](img/ws_tremolo.png)
+
+***És una modulació d'amplitud. L'envolvent del senyal oscil·la sinusoïdalment a la freqüència de modulació ``fm``,***
+***amb una profunditat controlada per ``A``. A la gràfica es veu l'envolvent oscil·lant amb període ``Tm=1/fm``i una***
+***profunditat igual a ``A`` (distància entre el màxim i el mínim de l'amplitud).***
+
+***EFECTO VIBRATO:***
+
 ![Efecto Vibrato](img/efecte_vibrato.png)
-    ***VIBRATO - WAVESURFER***
+    
+***VIBRATO - WAVESURFER***
 ![Wavesurfer Vibrato](img/ws_vibrato.png)
-  ***És una modulació de freqüència (pitch). El to oscil·la al voltant de la nota a la freqüència ``fm``, amb una extensió***
-  ***de I semitons. A la gràfica, la part inferior mostra la freqüència instantània oscil·lant al voltant de la fonamental,***
-  ***amb període ``Tm=1/fm`` i una excursió determinada per ``I``.***
+
+***És una modulació de freqüència (pitch). El to oscil·la al voltant de la nota a la freqüència ``fm``, amb una extensió***
+***de I semitons. A la gràfica, la part inferior mostra la freqüència instantània oscil·lant al voltant de la fonamental,***
+***amb període ``Tm=1/fm`` i una excursió determinada per ``I``.***
 
 
 
@@ -280,33 +295,37 @@ const vector<float> & Seno::synthesize() {
   el efecto, e indique, a continuación, la orden necesaria para generar los ficheros de audio usando el
   programa `synth`.
 
-  ***Com a efecte addicional s'ha implementat un glissando (estil trombó) que fa lliscar el to fins a la nota real.***
-  ***El senyal d'entrada conté la nota correcta, i l'efecte fa que durant els primers `t` segons el to comenci I semitons***
-  ***per sota i pugi de forma contínua fins a la nota real, on es manté. S'ha implementat seguint l'esquema del vibrato***
-  ***substituint la moduladora sinusoïdal per una rampa monòtona.***
-  ***Com que el factor de pitch sempre és ≤1, l'algorisme és causal de manera natural.***
+***Com a efecte addicional s'ha implementat un glissando (estil trombó) que fa lliscar el to fins a la nota real.***
+***El senyal d'entrada conté la nota correcta, i l'efecte fa que durant els primers `t` segons el to comenci I semitons***
+***per sota i pugi de forma contínua fins a la nota real, on es manté. S'ha implementat seguint l'esquema del vibrato***
+***substituint la moduladora sinusoïdal per una rampa monòtona.***
+***Com que el factor de pitch sempre és ≤1, l'algorisme és causal de manera natural.***
 
-  ***EFECTO GLISSANDO:***
+***EFECTO GLISSANDO:***
+
 ![Efecto Glissando](img/efecte_glissando.png)
-    ***GLISSANDO - WAVESURFER***
+
+***GLISSANDO - WAVESURFER***
+
 ![Wavesurfer Glissando](img/ws_glissando.png)
 
-  ***També s'ha generat una gràfica amb l'efecte glissando aplicat a una melodia de quatre notes (53, 57, 60 i 65).***
-  ***Cada cop que comença una nota nova, el to entra des de 4 semitons per sota i llisca de forma contínua fins a la***
-  ***freqüència objectiu (marcada amb les línies puntejades), on es manté fins a la nota següent. S'aprecia així l'efecte***
-  ***de lliscament tipus trombó encadenat al llarg de tota la melodia.***
+***També s'ha generat una gràfica amb l'efecte glissando aplicat a una melodia de quatre notes (53, 57, 60 i 65).***
+***Cada cop que comença una nota nova, el to entra des de 4 semitons per sota i llisca de forma contínua fins a la***
+***freqüència objectiu (marcada amb les línies puntejades), on es manté fins a la nota següent. S'aprecia així l'efecte***
+***de lliscament tipus trombó encadenat al llarg de tota la melodia.***
 
-  ***GLISSANDO MELODIA:***
+***GLISSANDO MELODIA:***
+
 ![Efecto Glissando Melodia](img/efecte_glissando_melodia.png)
   
 
-  ***ORDRES DE GENERACIÓ DE FITXERS D'ÀUDIO (directori `/work`):***
+***ORDRES DE GENERACIÓ DE FITXERS D'ÀUDIO (directori `/work`):***
   ```
     synth -e effects.orc sinus.orc tremolo.sco tremolo.wav
     synth -e effects.orc sinus.orc vibrato.sco vibrato.wav
   ```
 
-  ***ORDRES DE GENERACIÓ DE FITXERS D'ÀUDIO (directori `/work/ejemplos`):***
+***ORDRES DE GENERACIÓ DE FITXERS D'ÀUDIO (directori `/work/ejemplos`):***
   ```
     synth -e effects.orc sinus.orc glissando.sco glissando.wav
     synth -e effects.orc sinus.orc glissando_melodia.sco glissando_melodia.wav
@@ -331,6 +350,7 @@ deberá venir expresado en semitonos.
   ***Amb freqüència de modulació baixa i índex moderat, l'FM produeix un vibrato.***
   ***A la gràfica, a dalt es mostra el senyal (fc=440 Hz, fm=6 Hz) i a baix la freqüència instantània, que oscil·la al voltant de la portadora amb període ``Tm=1/fm=167 ms`` i excursió de pic ``fd=I·fm=18 Hz``.***
   ***fm fixa la velocitat de l'oscil·lació i el producte I·fm la seva amplitud.***
+  
   ![FM Vibrato](img/fm_vibrato_clar.png)
 
 
