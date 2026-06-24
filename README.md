@@ -452,7 +452,7 @@ L'ordre necessària per generar la senyal d'àudio és:
 
 ```bash
 synth pennylane.orc pennylane.sco pennylane.wav && play pennylane.wav
-
+```
 > NOTA:
 >
 > No olvide escuchar el resultado generado y comprobar que no se producen ruidos extraños o distorsiones.
